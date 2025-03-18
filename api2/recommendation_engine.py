@@ -7,14 +7,16 @@ from .models import User, Reel, Interaction
 def recommend_reels(user_id, top_n=30):
     user = User.objects.get(id=user_id)
     # watched_reels = Interaction.objects.filter(user=user).values_list('reel_id', flat=True)
-    watched_reels = Interaction.objects.filter(user=user, liked = True)
+    watched_reels = Interaction.objects.filter(user=user, liked = True).order_by('-watched_at')[:5]
     watched_reels_ids = []
     prioritized_property_types = []
 
     
     for i in watched_reels:
-        print(i.user.username)
-        print(i.reel.id)
+        # print(i.user.username)
+        # print(i.reel.id)
+        print(i.reel.location.location_name)
+        print(i.reel.area.area_name)
         watched_reels_ids.append(i.reel.id)
         prioritized_property_types.append({
             'location__location_name': i.reel.location.location_name,
@@ -51,7 +53,6 @@ def recommend_reels(user_id, top_n=30):
 
     if watched_features:
         print('============================== watched ==================================')
-        # user_profile = " ".join(watched_features) + " " + user.preferred_property_type + " " + user.location.location_name
         user_profile = " ".join(watched_features) + " " + user.preferred_property_type + " " + user.location.location_name
         print(user_profile)
     else:

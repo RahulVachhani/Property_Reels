@@ -44,7 +44,7 @@ class SearchReel(APIView):
         serializer = ReelSerializer(reels, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-# import random
+import random
 # from datetime import datetime, timedelta
 
 # property_types = ['villa', 'flat', 'house', 'apartment', 'studio', 'office']
@@ -65,4 +65,10 @@ class SearchReel(APIView):
 #         comments = random.randint(0, 500),
 #         shares = random.randint(0, 200)
 #     )
+
+# prices = [1000000,1500000,2000000,2500000,3000000,3500000,4000000]
+# reels = Reel.objects.all()
+# for i in reels:
+#     i.price = random.choice(prices)
+#     i.save()
 

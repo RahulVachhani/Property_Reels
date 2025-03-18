@@ -4,7 +4,7 @@ from .models import Reel, User, Interaction, Location, Area
 admin.site.register(Location)
 @admin.register(Reel)
 class ReelsAdmin(admin.ModelAdmin):
-    search_fields = ['id',"location__location_name", 'area__area_name', 'property_type']
+    search_fields = ['id',"location__location_name", 'area__area_name', 'property_type', 'price']
     # autocomplete_fields = ["location", "area"] 
     list_filter = ["property_type", "location", "area"]
     list_display = [

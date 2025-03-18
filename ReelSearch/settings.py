@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'search',
     'api',
     'api2',
+    'api3',
     'rest_framework',
     'corsheaders'
 ]
