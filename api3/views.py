@@ -17,7 +17,7 @@ class CustomPaginator(PageNumberPagination):
 class get_recommendations(APIView):
     def get(self,request, user_id, top_n = 30):
         reels = recommend_reels(user_id, top_n)
-        print(reels)
+        # print(reels)
         reelss = Reel.objects.filter(id__in=reels)
         reels_dict = {reel.id: reel for reel in reelss}
         ordered_reels = [reels_dict[reel_id] for reel_id in reels if reel_id in reels_dict]

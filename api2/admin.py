@@ -19,6 +19,8 @@ admin.site.register(Area)
 @admin.register(Interaction)
 class InsAdmin(admin.ModelAdmin):
     search_fields = ['user__username']
+    autocomplete_fields = ["reel"] 
     list_display = [
-        "id", "user", "reel"
+        "id", "user", "reel", "liked"
     ]
+    list_editable = ["liked"]
